@@ -1,12 +1,12 @@
+import { addDays, format, isSaturday, isSunday } from 'date-fns';
 import { describe, expect, it } from 'vitest';
 import {
-  formatScheduleDate,
-  getAvailableWeekendDays,
-  getDayLabel,
-  groupByWeek,
-  isFutureDate,
+    formatScheduleDate,
+    getAvailableWeekendDays,
+    getDayLabel,
+    groupByWeek,
+    isFutureDate,
 } from '../../src/lib/scheduling';
-import { isSaturday, isSunday, format, addDays } from 'date-fns';
 
 /**
  * Test suite for the scheduling logic.

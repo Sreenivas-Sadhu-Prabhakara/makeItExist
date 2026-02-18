@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-aim-navy: #0A1628;
+    --color-aim-blue: #1B3A6B;
+    --color-aim-gold: #C8A951;
+    --color-aim-gold-light: #E8CC6E;
+    --color-aim-white: #FAFBFC;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-aim-white dark:bg-aim-navy text-aim-navy dark:text-aim-white antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  ::selection {
+    @apply bg-aim-gold/30 text-aim-navy dark:text-aim-white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 
+           bg-aim-gold hover:bg-aim-gold-light text-aim-navy 
+           font-semibold rounded-xl transition-all duration-300 
+           hover:shadow-lg hover:shadow-aim-gold/25 hover:-translate-y-0.5
+           active:translate-y-0 active:shadow-md
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 
+           border-2 border-aim-gold text-aim-gold hover:bg-aim-gold hover:text-aim-navy
+           font-semibold rounded-xl transition-all duration-300
+           hover:shadow-lg hover:shadow-aim-gold/25 hover:-translate-y-0.5
+           active:translate-y-0 active:shadow-md;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3
+           text-aim-navy dark:text-aim-white hover:bg-aim-navy/5 dark:hover:bg-white/5
+           font-medium rounded-xl transition-all duration-300;
+  }
+
+  .card-glass {
+    @apply bg-white/80 dark:bg-aim-navy-light/80 backdrop-blur-xl 
+           border border-aim-gray-light/30 dark:border-aim-blue/30 
+           rounded-2xl shadow-lg shadow-aim-navy/5 dark:shadow-black/20;
+  }
+
+  .card-glass-hover {
+    @apply card-glass hover:shadow-xl hover:shadow-aim-gold/10 
+           hover:border-aim-gold/30 hover:-translate-y-1 
+           transition-all duration-500;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-aim-gold via-aim-gold-light to-aim-gold;
+  }
+
+  .text-gradient-blue {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-aim-blue-light via-aim-blue to-aim-blue-light;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3.5 rounded-xl border-2 
+           border-aim-gray-light/50 dark:border-aim-blue/50
+           bg-white dark:bg-aim-navy-light 
+           text-aim-navy dark:text-aim-white
+           placeholder:text-aim-gray/60 dark:placeholder:text-aim-gray/40
+           focus:outline-none focus:border-aim-gold focus:ring-2 focus:ring-aim-gold/20
+           transition-all duration-300;
+  }
+
+  .label-field {
+    @apply block text-sm font-semibold text-aim-navy dark:text-aim-white mb-2;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* AIM branded decorative border */
+  .aim-border-accent {
+    @apply border-l-4 border-aim-gold pl-4;
+  }
+
+  /* Gold shimmer animation for featured elements */
+  .gold-shimmer {
+    background: linear-gradient(
+      110deg,
+      transparent 20%,
+      rgba(200, 169, 81, 0.08) 40%,
+      rgba(200, 169, 81, 0.15) 50%,
+      rgba(200, 169, 81, 0.08) 60%,
+      transparent 80%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+}
+
+/* Custom scrollbar for light/dark mode */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-aim-gray-light dark:bg-aim-gray-dark rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-aim-gray dark:bg-aim-gray;
+}
+
+/* Toast overrides */
+.toast-custom {
+  @apply !bg-white dark:!bg-aim-navy-light !text-aim-navy dark:!text-aim-white !shadow-xl !rounded-xl !border !border-aim-gray-light/30 dark:!border-aim-blue/30;
+}
